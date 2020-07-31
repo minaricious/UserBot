@@ -75,6 +75,11 @@
       "description": "Get your own APPID (API key)from https://api.openweathermap.org/data/2.5/weather",
       "required": false
     },
+    "WEATHER_DEFLANG": {
+      "description": "Set the default language for the userbot's weather module.",
+      "value": "en",
+      "required": false
+    },
     "BOTLOG": {
       "description": "Incase you want to turn off logging, put this to false",
       "value": "False"
