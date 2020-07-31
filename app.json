@@ -1,7 +1,7 @@
 {
   "name": "Telegram UserBot",
   "description": "[UserBot] A modular Telegram userbot running on Python 3.7+ with an sqlalchemy database.",
-  "logo": "https://telegra.ph/file/7ccdf30b174916b1149d1.jpg",
+  "logo": "https://telegra.ph/file/25d784e42afe2ead08682.jpg",
   "keywords": [
     "telegram",
     "userbot",
