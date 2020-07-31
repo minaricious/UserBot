@@ -55,5 +55,6 @@ telethon-session-sqlalchemy>=0.2.6
 TgCrypto>=1.2.0
 twitter_scraper
 urbandict>=0.5
+validators
 wikipedia>=1.4.0
 youtube-dl>=2020.07.28
