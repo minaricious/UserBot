@@ -132,6 +132,14 @@
       "description": "Show Image/Logo in .alive message",
       "required": false
     },
+    "G_PHOTOS_CLIENT_ID": {
+      "description": "Get the client id from https://j.mp/39lWQQm",
+      "required": false
+    },
+    "G_PHOTOS_CLIENT_SECRET": {
+      "description": "Get the client secret from https://j.mp/39lWQQm",
+      "required": false
+    },
     "LASTFM_API": {
       "description": "API Key for Last.FM module. [Get one from - https://www.last.fm/api/account/create]",
       "required": false
