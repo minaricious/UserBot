@@ -1,7 +1,8 @@
 # UserBot
 
 <p align="center">
-    <a href="https://github.com/FSharon/UserBot/actions?query=PEP8"> <img src="https://github.com/FSharon/UserBot/workflows/PEP8/badge.svg?branch=master" alt="PEP8" /></a>
+    <a href="https://github.com/FSharon/UserBot/actions?query=workflow%3AFailCheck" > <img src="https://img.shields.io/github/workflow/status/FSharon/userbot/FailCheck/master?style=for-the-badge&logo=github-actions&logoColor=white" alt="Failcheck" /></a>
+    <a href="https://github.com/FSharon/UserBot/actions?query=workflow%3Apylint"> <img src="https://img.shields.io/github/workflow/status/FSharon/userbot/pylint/master?label=pylint&style=for-the-badge&logo=github-actions&logoColor=white" alt="Pylint" /></a>
     <a href="https://app.codacy.com/manual/dhanikata/UserBot?utm_source=github.com&utm_medium=referral&utm_content=FSharon/UserBot&utm_campaign=Badge_Grade_Dashboard"><img src="https://img.shields.io/codacy/grade/c460544d68334a51b84c83ce8d3a1e98?style=for-the-badge&logo=codacy" alt="codacy badge" /></a></br>
     <a href="https://github.com/FSharon/UserBot/commits/master"><img src="https://img.shields.io/github/last-commit/FSharon/userbot/master?style=for-the-badge&logo=github" alt="commit" /></a>
     <a href="https://github.com/FSharon/UserBot/graphs/contributors"><img src="https://img.shields.io/github/contributors-anon/FSharon/userbot?style=for-the-badge&logo=github" alt="Contributors" /></a>
