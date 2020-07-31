@@ -24,6 +24,7 @@ First of all you should know this bot is a major work in progress. It is a fork 
 
 ## Heroku Deploy
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/ea31f0dedb534e648b07ee1830b03230)](https://app.codacy.com/manual/dhanikata/UserBot?utm_source=github.com&utm_medium=referral&utm_content=FSharon/UserBot&utm_campaign=Badge_Grade_Dashboard)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/FSharon/UserBot/tree/master)
 
 ## Credits
