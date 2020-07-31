@@ -59,5 +59,6 @@ twitter_scraper
 urbandict
 validators
 wikipedia
+wget
 youtube-dl
 youtube_search
