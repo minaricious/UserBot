@@ -104,9 +104,10 @@ REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY") or None
 CHROME_DRIVER = os.environ.get("CHROME_DRIVER") or None
 GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN") or None
 
-# OpenWeatherMap API Key
+# Weather stuff
 OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID") or None
 WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY") or None
+WEATHER_DEFLANG = os.environ.get("WEATHER_DEFLANG", None)
 
 # Lydia API
 LYDIA_API_KEY = os.environ.get("LYDIA_API_KEY") or None
