@@ -31,6 +31,7 @@ oauth2client
 pendulum
 Pillow
 pip
+psutil
 psycopg2
 psycopg2-binary
 pybase64
