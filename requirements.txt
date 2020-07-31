@@ -27,6 +27,7 @@ httplib2
 humanize
 lxml
 oauth2client
+pendulum
 Pillow>=6.0.0
 pip>=19.2.3
 psycopg2
