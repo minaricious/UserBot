@@ -140,6 +140,10 @@
       "description": "Get the client secret from https://j.mp/39lWQQm",
       "required": false
     },
+    "WOLFRAM_ID": {
+      "description": "Get an API KEY from products.wolframalpha.com/api/",
+      "required": false
+    },
     "LASTFM_API": {
       "description": "API Key for Last.FM module. [Get one from - https://www.last.fm/api/account/create]",
       "required": false
