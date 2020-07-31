@@ -22,6 +22,11 @@
 
 First of all you should know this bot is a major work in progress. It is a fork of [Paperplane Extended](https://github.com/AvinashReddy3108/PaperplaneExtended)
 
+## Generate String Session
+Easy way to get STRING_SESSION. Run on repl.it
+
+[![Run on Repl.it](https://repl.it/badge/github/FSharon/UserBot)](https://repl.it/github/FSharon/UserBot)
+
 ## Heroku Deploy
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ea31f0dedb534e648b07ee1830b03230)](https://app.codacy.com/manual/dhanikata/UserBot?utm_source=github.com&utm_medium=referral&utm_content=FSharon/UserBot&utm_campaign=Badge_Grade_Dashboard)
