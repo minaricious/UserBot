@@ -145,6 +145,11 @@
       "description": "Get an API KEY from products.wolframalpha.com/api/",
       "required": false
     },
+    "IMG_LIMIT": {
+      "description": "Set limit for .img module",
+      "value": "5",
+      "required": true
+    },
     "LASTFM_API": {
       "description": "API Key for Last.FM module. [Get one from - https://www.last.fm/api/account/create]",
       "required": false
