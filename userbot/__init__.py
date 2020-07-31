@@ -180,6 +180,10 @@ QUOTES_API_TOKEN = os.environ.get("QUOTES_API_TOKEN") or None
 # Deezloader
 DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN") or None
 
+# Wolfram ID
+# Get an API KEY from products.wolframalpha.com/api/
+WOLFRAM_ID = os.environ.get("WOLFRAM_ID", None)
+
 # Zipfile module
 ZIP_DOWNLOAD_DIRECTORY = os.environ.get("ZIP_DOWNLOAD_DIRECTORY") or "./zips"
 
