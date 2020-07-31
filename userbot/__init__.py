@@ -182,6 +182,9 @@ DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN") or None
 # Get an API KEY from products.wolframalpha.com/api/
 WOLFRAM_ID = os.environ.get("WOLFRAM_ID", None)
 
+# IMG Stuff
+IMG_LIMIT = os.environ.get("IMG_LIMIT", None)
+
 # Zipfile module
 ZIP_DOWNLOAD_DIRECTORY = os.environ.get("ZIP_DOWNLOAD_DIRECTORY") or "./zips"
 
