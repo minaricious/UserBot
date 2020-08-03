@@ -57,14 +57,14 @@ TRT_LANG = "id"
 WIKI_LANG = "id"
 
 
-@register(outgoing=True, pattern=r"^\.crblang (.*)")
+@register(outgoing=True, pattern=r"^.crblang (.*)")
 async def setlang(prog):
     global CARBONLANG
     CARBONLANG = prog.pattern_match.group(1)
     await prog.edit(f"Language for carbon.now.sh set to {CARBONLANG}")
 
 
-@register(outgoing=True, pattern=r"^\.carbon")
+@register(outgoing=True, pattern=r"^.carbon")
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     await e.edit("`Processing...`")
@@ -104,7 +104,7 @@ async def carbon_api(e):
     await e.delete()  # Deleting msg
 
 
-@register(outgoing=True, pattern=r"^\.img (.*)")
+@register(outgoing=True, pattern=r"^.img (.*)")
 async def img_sampler(event):
     """ For .img command, search and return images matching the query. """
     await event.edit("`Processing...`")
@@ -138,7 +138,7 @@ async def img_sampler(event):
     shutil.rmtree(os.path.dirname(os.path.abspath(lst[0])))
 
 
-@register(outgoing=True, pattern=r"^\.currency (.*)")
+@register(outgoing=True, pattern=r"^.currency (.*)")
 async def moni(event):
     input_str = event.pattern_match.group(1)
     input_sgra = input_str.split(" ")
@@ -166,7 +166,7 @@ async def moni(event):
         return await event.edit("`Invalid syntax.`")
 
 
-@register(outgoing=True, pattern=r"^\.google (.*)")
+@register(outgoing=True, pattern=r"^.google (.*)")
 async def gsearch(q_event):
     """ For .google command, do a Google search. """
     match = q_event.pattern_match.group(1)
@@ -200,7 +200,7 @@ async def gsearch(q_event):
         )
 
 
-@register(outgoing=True, pattern=r"^\.wklang (.*)")
+@register(outgoing=True, pattern=r"^.wklang (.*)")
 async def setlang(wklang):
     global WIKI_LANG
     WIKI_LANG = wklang.pattern_match.group(1)
@@ -208,7 +208,7 @@ async def setlang(wklang):
     await wklang.edit(f"Language for wikipedia set to {WIKI_LANG}")
 
 
-@register(outgoing=True, pattern=r"^\.wiki (.*)")
+@register(outgoing=True, pattern=r"^.wiki (.*)")
 async def wiki(wiki_q):
     """ For .wiki command, fetch content from Wikipedia. """
     match = wiki_q.pattern_match.group(1)
@@ -238,7 +238,7 @@ async def wiki(wiki_q):
         )
 
 
-@register(outgoing=True, pattern=r"^\.ud (.*)")
+@register(outgoing=True, pattern=r"^.ud (.*)")
 async def urban_dict(ud_e):
     """ For .ud command, fetch content from Urban Dictionary. """
     await ud_e.edit("Processing...")
@@ -291,7 +291,7 @@ async def urban_dict(ud_e):
         await ud_e.edit("No result found for **" + query + "**")
 
 
-@register(outgoing=True, pattern=r"^\.tts(?: |$)([\s\S]*)")
+@register(outgoing=True, pattern=r"^.tts(?: |$)([\s\S]*)")
 async def text_to_speech(query):
     """ For .tts command, a wrapper for Google Text-to-Speech. """
     textx = await query.get_reply_message()
@@ -335,7 +335,7 @@ async def text_to_speech(query):
 
 
 # kanged from Blank-x ;---;
-@register(outgoing=True, pattern=r"^\.imdb (.*)")
+@register(outgoing=True, pattern=r"^.imdb (.*)")
 async def imdb(e):
     try:
         movie_name = e.pattern_match.group(1)
@@ -430,7 +430,7 @@ async def imdb(e):
         await e.edit("Plox enter **Valid movie name** kthx")
 
 
-@register(outgoing=True, pattern=r"^\.trt(?: |$)([\s\S]*)")
+@register(outgoing=True, pattern=r"^.trt(?: |$)([\s\S]*)")
 async def translateme(trans):
     """ For .trt command, translate the given text using Google Translate. """
     translator = Translator()
@@ -493,7 +493,7 @@ async def lang(value):
         )
 
 
-@register(outgoing=True, pattern=r"^\.yt (\d*) *(.*)")
+@register(outgoing=True, pattern="^.yt (.*)")
 async def yt_search(event):
     """ For .yt command, do a YouTube search from Telegram. """
 
@@ -538,7 +538,7 @@ async def yt_search(event):
     await event.edit(output, link_preview=False)
 
 
-@register(outgoing=True, pattern=r"^\.rip(audio|video) (.*)")
+@register(outgoing=True, pattern=r".rip(audio|video) (.*)")
 async def download_video(v_url):
     """ For media downloader command, download media from YouTube and many other sites. """
     url = v_url.pattern_match.group(2)
@@ -546,7 +546,7 @@ async def download_video(v_url):
 
     await v_url.edit("`Preparing to download...`")
 
-    if type == "a":
+    if type == "audio":
         opts = {
             "format": "bestaudio",
             "addmetadata": True,
@@ -569,7 +569,7 @@ async def download_video(v_url):
         video = False
         song = True
 
-    elif type == "v":
+    elif type == "video":
         opts = {
             "format": "best",
             "addmetadata": True,
@@ -647,7 +647,7 @@ async def download_video(v_url):
         await v_url.delete()
 
 
-@register(outgoing=True, pattern=r"^\.wolfram (.*)")
+@register(outgoing=True, pattern=r"^.wolfram (.*)")
 async def wolfram(wvent):
     if WOLFRAM_ID is None:
         await wvent.edit(
