@@ -52,7 +52,7 @@ spcli
 speedtest-cli
 sqlalchemy
 telegraph
-telethon
+telethon==1.15.0
 telethon-session-sqlalchemy
 TgCrypto
 twitter_scraper
