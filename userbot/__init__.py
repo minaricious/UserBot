@@ -127,6 +127,9 @@ ALIVE_NAME = os.environ.get("ALIVE_NAME") or None
 # Default .alive logo
 ALIVE_LOGO = os.environ.get("ALIVE_LOGO") or None
 
+# UserBot version
+USERBOT_VERSION = os.environ.get("USERBOT_VERSION") or "MORE & MORE"
+
 # Time & Date - Country and Time Zone
 COUNTRY = str(os.environ.get("COUNTRY") or "")
 TZ_NUMBER = int(os.environ.get("TZ_NUMBER") or 1)
