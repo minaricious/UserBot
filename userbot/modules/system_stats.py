@@ -57,7 +57,7 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-@register(outgoing=True, pattern=r"^\.spc")
+@register(outgoing=True, pattern=r"^.spc")
 async def psu(event):
     uname = platform.uname()
     softw = "**System Information**\n"
@@ -115,7 +115,7 @@ def get_size(bytes, suffix="B"):
         bytes /= factor
 
 
-@register(outgoing=True, pattern=r"^\.sysd$")
+@register(outgoing=True, pattern=r"^.sysd$")
 async def sysdetails(sysd):
     """For .sysd command, get system info using neofetch."""
     if not sysd.text[0].isalpha() and sysd.text[0] not in ("/", "#", "@", "!"):
@@ -223,26 +223,29 @@ async def pipcheck(pip):
         await pip.edit("`Use .help pip to see an example`")
 
 
-@register(outgoing=True, pattern=r"^\.(?:alive|on)\s?(.)?")
+@register(outgoing=True, pattern=r"^.(?:alive|on)\s?(.)?")
 async def amireallyalive(alive):
     """For .alive command, check if the bot is running."""
     uptime = await get_readable_time((time.time() - StartTime))
     output = ("`UserBot is running...`\n"
               "`=================================`\n"
-              f"👤 `User        :` {DEFAULTUSER}\n"
-              f"🐍 `Python      :` v{python_version()}\n"
-              f"⚙️ `Telethon    :` v{version.__version__}\n"
-              f"🕒 Bot Uptime       : {uptime}\n"
+              f"👤 `User            : {DEFAULTUSER} `\n"
+              f"🐍 `Python          : v{python_version()} `\n"
+              f"⚙️ `Telethon        : v{version.__version__} `\n"
+              f"🕒 `Bot Uptime      : {uptime} `\n"
               "`---------------------------------\n`"
-              f"🛠 `Running on  :` {repo.active_branch.name}\n"
-              f"🧩 `Loaded modules :` {len(modules)}\n"
+              f"🛠 `Running on       : {repo.active_branch.name} `\n"
+              f"🧩 `Loaded modules    : {len(modules)} `\n"
+              f"🍭 `UserBot version  : {USERBOT_VERSION} `\n"
               "`=================================`")
     if ALIVE_LOGO:
-        logo = ALIVE_LOGO
-        await bot.send_file(alive.chat_id, logo, caption=output)
-        await alive.delete()
-    else:
-        await alive.edit(output)
+        try:
+            logo = ALIVE_LOGO
+            await bot.send_file(alive.chat_id, logo, caption=output)
+            await alive.delete()
+        except BaseException:
+            await alive.edit(output + "\n\n *`The provided logo is invalid."
+                             "\nMake sure the link is telegraph media link`")
 
 
 @register(outgoing=True, pattern="^.aliveu")
