@@ -146,7 +146,6 @@ def register(**args):
                         await asyncio.sleep(3.5)
                         await sorry_msg.delete()
 
-
                     await check.client.send_file(send_to,
                                                  "error.txt",
                                                  caption=text)
