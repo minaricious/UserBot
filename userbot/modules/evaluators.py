@@ -185,7 +185,7 @@ async def terminal_runner(term):
         await term.client.send_message(
             BOTLOG_CHATID, "Terminal command " + command + " was executed sucessfully.",
         )
-        
+
 
 CMD_HELP.update({
     "eval": ".eval 2 + 3" "\nUsage: Evalute mini-expressions.",
