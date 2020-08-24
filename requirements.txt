@@ -5,7 +5,6 @@ async_generator
 beautifulsoup4
 bs4
 cffi
-coffeehouse
 covid
 cowpy
 cryptg
@@ -52,7 +51,7 @@ spcli
 speedtest-cli
 sqlalchemy
 telegraph
-telethon==1.15.0
+telethon
 telethon-session-sqlalchemy
 TgCrypto
 twitter_scraper
