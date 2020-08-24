@@ -19,7 +19,7 @@ async def _(event):
         await event.edit("` I need a link to download something pro.`**(._.)**")
     else:
         await event.edit("```Processing```")
-    chat = "@ttsavebot"
+    chat = "@allsaverbot"
     async with bot.conversation(chat) as conv:
         try:
             msg_start = await conv.send_message("/start")
@@ -30,7 +30,7 @@ async def _(event):
             """ - don't spam notif - """
             await bot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await event.edit("**Error:** `unblock` @ttsavebot `and retry!`")
+            await event.edit("**Error:** `unblock` @allsaverbot `and retry!`")
             return
         await bot.send_file(event.chat_id, video)
         await event.client.delete_messages(conv.chat_id,
@@ -40,5 +40,5 @@ async def _(event):
 CMD_HELP.update({
     "tiktok":
     ".tiktok <Link>"
-    "\nUsage: Download TikTok video without watermark with @ttsavebot"
+    "\nUsage: Download TikTok video with @allsaverbot"
 })
