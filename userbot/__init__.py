@@ -178,9 +178,6 @@ TERM_ALIAS = os.environ.get("TERM_ALIAS") or "Userbot"
 GENIUS = os.environ.get("GENIUS_API_TOKEN") or None
 GENIUS_API_TOKEN = os.environ.get("GENIUS_API_TOKEN") or None
 
-# Quotes API Token
-QUOTES_API_TOKEN = os.environ.get("QUOTES_API_TOKEN") or None
-
 # Deezloader
 DEEZER_ARL_TOKEN = os.environ.get("DEEZER_ARL_TOKEN") or None
 
