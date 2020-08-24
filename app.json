@@ -120,10 +120,6 @@
       "description": "When a new person joins, the old welcome message is deleted.",
       "value": "True"
     },
-    "QUOTES_API_TOKEN": {
-      "description": "Enhance ur text to sticker. Get your own API token from http://antiddos.systems.",
-      "value": ""
-    },
     "DEEZER_ARL_TOKEN": {
       "description": "Put your Deezer ARL token here. How to get token - https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken",
       "required": false,
@@ -181,10 +177,6 @@
     },
     "G_DRIVE_DATA": {
       "description": "Your client_secret.json.",
-      "required": false
-    },
-    "LYDIA_API_KEY": {
-      "description": "This Module Needs CoffeeHouse API to work. so Join https://telegram.dog/IntellivoidDev and send #activateapi and follow instructions.",
       "required": false
     },
     "GENIUS_ACCESS_TOKEN": {
