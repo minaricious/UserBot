@@ -179,8 +179,12 @@
       "description": "Your client_secret.json.",
       "required": false
     },
-    "GENIUS_ACCESS_TOKEN": {
+    "GENIUS_API_TOKEN": {
       "description": "Client Access Token from https://genius.com/api-clients.",
+      "required": false
+    },
+    "GENIUS": {
+      "description": "Fill like GENIUS_API_TOKEN value",
       "required": false
     },
     "WEATHER_DEFCITY": {
