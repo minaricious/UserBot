@@ -114,9 +114,6 @@ OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID") or None
 WEATHER_DEFCITY = os.environ.get("WEATHER_DEFCITY") or None
 WEATHER_DEFLANG = os.environ.get("WEATHER_DEFLANG", None)
 
-# Lydia API
-LYDIA_API_KEY = os.environ.get("LYDIA_API_KEY") or None
-
 # Anti Spambot Config
 ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT") or "False")
 ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT") or "False")
@@ -179,6 +176,7 @@ TERM_ALIAS = os.environ.get("TERM_ALIAS") or "Userbot"
 
 # Genius Lyrics API
 GENIUS = os.environ.get("GENIUS_API_TOKEN") or None
+GENIUS_API_TOKEN = os.environ.get("GENIUS_API_TOKEN") or None
 
 # Quotes API Token
 QUOTES_API_TOKEN = os.environ.get("QUOTES_API_TOKEN") or None
