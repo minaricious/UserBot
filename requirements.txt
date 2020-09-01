@@ -2,6 +2,7 @@ aiofiles
 aiohttp == 3.6.2
 aria2p
 async_generator
+base
 beautifulsoup4
 bs4
 cffi
@@ -13,6 +14,7 @@ dnspython
 emoji
 git+https://github.com/johnwmillr/LyricsGenius.git
 gitpython
+glitch_this
 google-api-python-client
 google-auth-httplib2
 google-auth-oauthlib
@@ -27,7 +29,7 @@ httplib2
 humanize
 lxml
 oauth2client
-pendulum
+pendulum == 2.0.5
 Pillow
 pip
 psutil
@@ -56,7 +58,6 @@ telegraph
 telethon
 telethon-session-sqlalchemy
 TgCrypto
-twitter_scraper
 urbandict
 validators
 wikipedia
