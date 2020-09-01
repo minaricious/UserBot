@@ -46,6 +46,7 @@ qrcode
 redis
 regex
 requests
+setuptools>=28.8.0
 search-engine-parser
 spcli
 speedtest-cli
