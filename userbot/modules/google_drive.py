@@ -1352,7 +1352,7 @@ CMD_HELP.update({
     "\n\n.gdfset put"
     "\nUsage: Change upload directory in gdrive."
     "\n\n.gdfset rm"
-    "\nUsage: remove set parentId from cmd\n>`.gdfset put` "
+    "\nUsage: remove set parentId from cmd\n.gdfset put"
     "into **G_DRIVE_FOLDER_ID** and if empty upload will go to root."
     "\n\nNOTE:"
     "\nfor .gdlist you can combine -l and -p flags with or without name "
