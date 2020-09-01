@@ -11,6 +11,7 @@ from glitch_this import ImageGlitcher
 from userbot import bot, CMD_HELP, LOGS
 from userbot.events import register
 
+
 @register(pattern="^.(glitch|glitchs)(?: |$)(.*)", outgoing=True)
 async def glitch(event):
     await event.edit("```Glitching Wait...```")
@@ -23,8 +24,8 @@ async def glitch(event):
     if not os.path.isdir("./temp/"):
         os.mkdir("./temp/")
     reply_to_id = event.reply_to_msg_id
-    remixsticker = await reply.download_media(file = "./temp/")
-    if not remixsticker.endswith(('.mp4','.webp','.tgs','.png','.jpg')):
+    remixsticker = await reply.download_media(file="./temp/")
+    if not remixsticker.endswith(('.mp4', '.webp', '.tgs', '.png', '.jpg')):
         os.remove(remixsticker)
         await event.edit("`Media not found...`")
         return
@@ -34,11 +35,11 @@ async def glitch(event):
             await event.edit("`You input is invalid, check help`")
             return
         input = int(input)
-        if not 0 < input< 9:
+        if not 0 < input < 9:
             await event.edit("`Invalid Range...`")
             return
     else:
-         input = 2
+        input = 2
     if remixsticker.endswith(".tgs"):
         file = os.path.join("./temp/", "glitch.png")
         cmd = f"lottie_convert.py --frame 0 -if lottie -of png {remixsticker} {file}"
@@ -49,14 +50,14 @@ async def glitch(event):
         glitch_file = file
     elif remixsticker.endswith(".webp"):
         file = os.path.join("./temp/", "glitch.png")
-        os.rename(remixsticker , file)
+        os.rename(remixsticker, file)
         if not os.path.lexists(file):
             await event.edit("`remixsticker not found... `")
             return
         glitch_file = file
     elif remixsticker.endswith(".mp4"):
         file = os.path.join("./temp/", "glitch.png")
-        await take_screen_shot(remixsticker , 0, file)
+        await take_screen_shot(remixsticker, 0, file)
         if not os.path.lexists(file):
             await event.edit("```remixsticker not found...```")
             return
@@ -77,7 +78,8 @@ async def glitch(event):
         await event.delete()
     elif cmd == "glitch":
         Glitched = "./temp/" + "glitch.gif"
-        glitch_img = glitcher.glitch_image(img, input, color_offset=True, gif=True)
+        glitch_img = glitcher.glitch_image(
+            img, input, color_offset=True, gif=True)
         DURATION = 200
         LOOP = 0
         glitch_img[0].save(
@@ -96,13 +98,13 @@ async def glitch(event):
     for files in (remixsticker, glitch_file):
         if files and os.path.exists(files):
             os.remove(files)
-            
+
 CMD_HELP.update({
-  "glitch":
-  ".glitch` reply to media file\
+    "glitch":
+    ".glitch` reply to media file\
 \nUsage:glitches the given mediafile(gif , stickers , image, videos) to a gif and glitch range is from 1 to 8.\
 If nothing is mentioned then by default it is 2\
 \n\n.glitchs reply to media file\
 \nUsage:glitches the given mediafile(gif , stickers , image, videos) to a sticker and glitch range is from 1 to 8.\
-If nothing is mentioned then by default it is 2."     
+If nothing is mentioned then by default it is 2."
 })
