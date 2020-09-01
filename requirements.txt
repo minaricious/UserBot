@@ -47,6 +47,7 @@ redis
 regex
 requests
 search-engine-parser
+setuptools
 spcli
 speedtest-cli
 sqlalchemy
