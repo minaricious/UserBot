@@ -9,7 +9,7 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/FSharon/UserBot",
+  "repository": "https://github.com/minaricious/UserBot",
   "website": "https://telegra.ph/How-to-host-a-Telegram-Userbot-11-02",
   "success_url": "https://t.me/userbotindo",
   "stack": "container",
@@ -184,7 +184,7 @@
       "required": false
     },
     "GENIUS": {
-      "description": "Fill like GENIUS_API_TOKEN value",
+      "description": "Same GENIUS_API_TOKEN value",
       "required": false
     },
     "WEATHER_DEFCITY": {
