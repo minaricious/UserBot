@@ -28,10 +28,9 @@ for module_name in ALL_MODULES:
 
 LOGS.info("You are running Userbot [ver : MORE & MORE]")
 
-LOGS.info(
-    "Congratulations, your userbot is now running !!"
-    "Test it by typing .alive, .on or .alive in any chat."
-    "for further assistance, head to https://t.me/userbotindo")
+LOGS.info("Congratulations, your userbot is now running !!")
+LOGS.info("Test it by typing .alive, .on or .alive in any chat.")
+LOGS.info("For further assistance, head to https://t.me/userbotindo")
 
 
 if len(argv) not in (1, 3, 4):
