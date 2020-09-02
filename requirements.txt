@@ -1,5 +1,5 @@
 aiofiles
-aiohttp == 3.6.2
+aiohttp
 aria2p
 async_generator
 base
@@ -47,10 +47,9 @@ pytz
 qrcode
 redis
 regex
-requests>=2.23.0
-setuptools>=46.4.0
+requests
+setuptools
 search-engine-parser
-simplejson == 3.17.0
 spcli
 speedtest-cli
 sqlalchemy
