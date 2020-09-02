@@ -25,7 +25,6 @@ from os.path import basename
 from typing import Optional, Tuple
 
 
-
 async def md5(fname: str) -> str:
     hash_md5 = hashlib.md5()
     with open(fname, "rb") as f:
