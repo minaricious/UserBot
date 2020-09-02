@@ -19,18 +19,11 @@ import re
 import hashlib
 import asyncio
 import shlex
-import datetime
-import logging
 import os
 import os.path
 from os.path import basename
-import sys
-import time
-from typing import Tuple, Union, Optional
+from typing import Optional, Tuple
 
-from telethon import errors
-from telethon.tl import types
-from telethon.utils import get_display_name
 
 
 async def md5(fname: str) -> str:
@@ -96,9 +89,13 @@ async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
 
 async def take_screen_shot(video_file: str, duration: int, path: str = '') -> Optional[str]:
     """ take a screenshot """
-    LOGS.info('[[[Extracting a frame from %s ||| Video duration => %s]]]', video_file, duration)
+    LOGS.info(
+        '[[[Extracting a frame from %s ||| Video duration => %s]]]',
+        video_file,
+        duration)
     ttl = duration // 2
-    thumb_image_path = path or os.path.join("./temp/", f"{basename(video_file)}.jpg")
+    thumb_image_path = path or os.path.join(
+        "./temp/", f"{basename(video_file)}.jpg")
     command = f"ffmpeg -ss {ttl} -i '{video_file}' -vframes 1 '{thumb_image_path}'"
     err = (await runcmd(command))[1]
     if err:
