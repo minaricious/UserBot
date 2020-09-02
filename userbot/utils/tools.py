@@ -23,6 +23,7 @@ import os
 import os.path
 from os.path import basename
 from typing import Optional, Tuple
+from userbot import bot, LOGS
 
 
 async def md5(fname: str) -> str:
