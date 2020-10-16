@@ -17,13 +17,9 @@ async def help(event):
     args = event.pattern_match.group(1).lower()
     if args:
         if args in CMD_HELP:
-            await event.edit(str(CMD_HELP[args]))
-            await asyncio.sleep(25)
-            await event.delete()
+            msg = await event.edit(str(CMD_HELP[args]))
         else:
-            await event.edit("Please specify a valid module name.")
-            await asyncio.sleep(25)
-            await event.delete()
+            msg = await event.edit("Please specify a valid module name.")
     else:
         await event.edit("Please specify which module do you want help for !!\
             \nUsage: .help <module name>")
@@ -31,6 +27,9 @@ async def help(event):
         for i in CMD_HELP:
             string += "`" + str(i)
             string += "`\n"
-        await event.reply(string)
-        await asyncio.sleep(25)
-        await event.delete()
+        msg = await event.edit(string)
+    await asyncio.sleep(45)
+    try:
+        await msg.delete()
+    except BaseException:
+        return
