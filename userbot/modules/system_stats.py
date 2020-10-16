@@ -5,6 +5,7 @@
 #
 """ Userbot module for getting information about the server. """
 
+import asyncio
 import platform
 import sys
 import time
@@ -19,6 +20,7 @@ import psutil
 from telethon import __version__, version
 from git import Repo
 
+from telethon.errors.rpcerrorlist import MediaEmptyError
 from userbot import CMD_HELP, ALIVE_NAME, ALIVE_LOGO, USERBOT_VERSION, StartTime, bot
 from userbot.events import register
 
@@ -241,11 +243,19 @@ async def amireallyalive(alive):
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
-            await bot.send_file(alive.chat_id, logo, caption=output)
             await alive.delete()
-        except BaseException:
+            await bot.send_file(alive.chat_id, logo, caption=output)
+        except MediaEmptyError:
             await alive.edit(output + "\n\n *`The provided logo is invalid."
                              "\nMake sure the link is telegraph media link`")
+        else:
+            msg = await alive.edit(output)
+        await asyncio.sleep(45)
+        try:
+            await msg.delete()
+        expect BaseExpection:
+            return
+            
 
 
 @register(outgoing=True, pattern="^.aliveu")
