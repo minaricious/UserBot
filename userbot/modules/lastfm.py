@@ -33,11 +33,7 @@ ARTIST = 0
 SONG = 0
 USER_ID = 0
 
-if BIO_PREFIX:
-    BIOPREFIX = BIO_PREFIX
-else:
-    BIOPREFIX = None
-
+BIOPREFIX = BIO_PREFIX if BIO_PREFIX else None
 LASTFMCHECK = False
 RUNNING = False
 LastLog = False
@@ -46,8 +42,8 @@ LastLog = False
 
 @register(outgoing=True, pattern="^.lastfm$")
 async def last_fm(lastFM):
-    """ For .lastfm command, fetch scrobble data from last.fm. """
-    await lastFM.edit("`Processing...`")
+    """For .lastfm command, fetch scrobble data from last.fm."""
+    await lastFM.edit("Processing...")
     preview = None
     playing = User(LASTFM_USERNAME, lastfm).get_now_playing()
     username = f"https://www.last.fm/user/{LASTFM_USERNAME}"
@@ -57,7 +53,10 @@ async def last_fm(lastFM):
                          lastfm).get_now_playing().get_cover_image()
         except IndexError:
             image = None
-        tags = await gettags(isNowPlaying=True, playing=playing)
+        try:
+            tags = await gettags(isNowPlaying=True, playing=playing)
+        except WSError as err:
+            return await lastFM.edit(err)
         rectrack = parse.quote(f"{playing}")
         rectrack = sub("^", "https://open.spotify.com/search/",
                        rectrack)
@@ -76,7 +75,10 @@ async def last_fm(lastFM):
         for i, track in enumerate(recent):
             print(i)
             printable = await artist_and_song(track)
-            tags = await gettags(track)
+            try:
+                tags = await gettags(track)
+            except WSError as err:
+                return await lastFM.edit(err)
             rectrack = parse.quote(str(printable))
             rectrack = sub("^",
                            "https://open.spotify.com/search/",
@@ -147,13 +149,12 @@ async def get_curr_track(lfmbio):
                 except AboutTooLongError:
                     short_bio = f"🎧: {SONG}"
                     await bot(UpdateProfileRequest(about=short_bio))
-            else:
-                if playing is None and user_info.about != DEFAULT_BIO:
-                    await sleep(6)
-                    await bot(UpdateProfileRequest(about=DEFAULT_BIO))
-                    if BOTLOG and LastLog:
-                        await bot.send_message(
-                            BOTLOG_CHATID, f"Reset bio back to\n{DEFAULT_BIO}")
+            if playing is None and user_info.about != DEFAULT_BIO:
+                await sleep(6)
+                await bot(UpdateProfileRequest(about=DEFAULT_BIO))
+                if BOTLOG and LastLog:
+                    await bot.send_message(
+                        BOTLOG_CHATID, f"Reset bio back to\n{DEFAULT_BIO}")
         except AttributeError:
             try:
                 if user_info.about != DEFAULT_BIO:
@@ -217,12 +218,9 @@ async def lastlog(lstlog):
         await lstlog.edit(LFM_LOG_ERR)
 
 
-CMD_HELP.update({
-    'lastfm':
-    ".lastfm\
-    \nUsage: Shows currently scrobbling track or most recent scrobbles if nothing is playing.\
-    \n\nlastbio: .lastbio <on/off>\
-    \nUsage: Enables/Disables last.fm current playing to bio.\
-    \n\nlastlog: .lastlog <on/off>\
-    \nUsage: Enable/Disable last.fm bio logging in the bot-log group."
-})
+CMD_HELP.update({'lastfm': ".lastfm"
+                 "\nUsage: Shows currently scrobbling track or most recent scrobbles if nothing is playing."
+                 "\n\n.lastbio <on/off>"
+                 "\nUsage: Enables/Disables last.fm current playing to bio."
+                 "\n\n.lastlog <on/off>"
+                 "\nUsage: Enable/Disable last.fm bio logging in the bot-log group."})
