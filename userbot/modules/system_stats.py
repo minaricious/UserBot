@@ -253,7 +253,7 @@ async def amireallyalive(alive):
         await asyncio.sleep(45)
         try:
             await msg.delete()
-        expect BaseExpection:
+        except BaseException:
             return
 
 
