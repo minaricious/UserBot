@@ -255,7 +255,6 @@ async def amireallyalive(alive):
             await msg.delete()
         expect BaseExpection:
             return
-            
 
 
 @register(outgoing=True, pattern="^.aliveu")
