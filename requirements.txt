@@ -23,13 +23,12 @@ google_images_download
 gTTS
 gTTS-token
 hachoir
-# heroku
 heroku3
 httplib2
 humanize
 lxml
 oauth2client
-pendulum == 2.0.5
+pendulum
 Pillow
 pip
 psutil
@@ -49,7 +48,7 @@ redis
 regex
 requests
 setuptools
-search-engine-parser
+git+https://github.com/bisoncorps/search-engine-parser.git
 spcli
 speedtest-cli
 sqlalchemy
@@ -59,7 +58,8 @@ telethon-session-sqlalchemy
 TgCrypto
 urbandict
 validators
+vcsi
 wikipedia
 wget
-youtube-dl
+git+https://github.com/magneto261290/youtube-dl
 youtube_search
