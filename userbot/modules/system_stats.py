@@ -244,17 +244,17 @@ async def amireallyalive(alive):
         try:
             logo = ALIVE_LOGO
             await alive.delete()
-            await bot.send_file(alive.chat_id, logo, caption=output)
+            msg = await bot.send_file(alive.chat_id, logo, caption=output)
         except MediaEmptyError:
-            await alive.edit(output + "\n\n *`The provided logo is invalid."
+            msg = await alive.edit(output + "\n\n *`The provided logo is invalid."
                              "\nMake sure the link is telegraph media link`")
-        else:
-            msg = await alive.edit(output)
-        await asyncio.sleep(45)
-        try:
-            await msg.delete()
-        except BaseException:
-            return
+    else:
+        msg = await alive.edit(output)
+    await asyncio.sleep(45)
+    try:
+        await msg.delete()
+    except BaseException:
+        return
 
 
 @register(outgoing=True, pattern="^.aliveu")
