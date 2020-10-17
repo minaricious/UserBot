@@ -247,7 +247,7 @@ async def amireallyalive(alive):
             msg = await bot.send_file(alive.chat_id, logo, caption=output)
         except MediaEmptyError:
             msg = await alive.edit(output + "\n\n *`The provided logo is invalid."
-                             "\nMake sure the link is telegraph media link`")
+                                   "\nMake sure the link is telegraph media link`")
     else:
         msg = await alive.edit(output)
     await asyncio.sleep(45)
