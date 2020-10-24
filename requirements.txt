@@ -61,5 +61,5 @@ validators
 vcsi
 wikipedia
 wget
-git+https://github.com/magneto261290/youtube-dl
+youtube-dl
 youtube_search
