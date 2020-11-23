@@ -62,4 +62,5 @@ vcsi
 wikipedia
 wget
 youtube-dl
+youtube-dlc
 youtube_search
