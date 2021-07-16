@@ -110,18 +110,18 @@ async def mega_downloader(megadl):
     start = time.time()
     while not downloader.isFinished():
         status = downloader.get_status().capitalize()
-        total_length = downloader.filesize if downloader.filesize else None
+        total_length = downloader.filesize or None
         downloaded = downloader.get_dl_size()
         percentage = int(downloader.get_progress() * 100)
         speed = downloader.get_speed(human=True)
         estimated_total_time = round(downloader.get_eta())
         progress_str = "`{0}` | [{1}{2}] `{3}%`".format(
             status,
-            ''.join(["●" for i in range(
-                    math.floor(percentage / 10))]),
-            ''.join(["○" for i in range(
-                    10 - math.floor(percentage / 10))]),
-            round(percentage, 2))
+            ''.join("●" for i in range(math.floor(percentage / 10))),
+            ''.join("○" for i in range(10 - math.floor(percentage / 10))),
+            round(percentage, 2),
+        )
+
         diff = time.time() - start
         try:
             current_message = (

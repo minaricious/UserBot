@@ -109,13 +109,20 @@ async def ANTI_SPAMBOT(welcm):
                     elif "bit.ly/" in message.text:
                         reason = "Match on `bit.ly` URLs"
                         spambot = True
-                    else:
-                        if check_user.first_name in ("Bitmex", "Promotion",
-                                                     "Information", "Dex",
-                                                     "Announcements", "Info"):
-                            if user.last_name == "Bot":
-                                reason = "Known spambot"
-                                spambot = True
+                    elif (
+                        check_user.first_name
+                        in (
+                            "Bitmex",
+                            "Promotion",
+                            "Information",
+                            "Dex",
+                            "Announcements",
+                            "Info",
+                        )
+                        and user.last_name == "Bot"
+                    ):
+                        reason = "Known spambot"
+                        spambot = True
 
                     if spambot:
                         print(f"Potential Spam Message: {message.text}")
@@ -128,16 +135,7 @@ async def ANTI_SPAMBOT(welcm):
                 chat = await welcm.get_chat()
                 admin = chat.admin_rights
                 creator = chat.creator
-                if not admin and not creator:
-                    if ANTI_SPAMBOT_SHOUT:
-                        await welcm.reply(
-                            "@admins\n"
-                            "`ANTI SPAMBOT DETECTOR!\n"
-                            "THIS USER MATCHES MY ALGORITHMS AS A SPAMBOT!`"
-                            f"REASON: {reason}")
-                        kicked = False
-                        reported = True
-                else:
+                if admin or creator:
                     try:
 
                         await welcm.reply(
@@ -162,16 +160,23 @@ async def ANTI_SPAMBOT(welcm):
                             kicked = False
                             reported = True
 
-                if BOTLOG:
-                    if kicked or reported:
-                        await welcm.client.send_message(
-                            BOTLOG_CHATID, "#ANTI_SPAMBOT REPORT\n"
-                            f"USER: [{check_user.first_name}](tg://user?id={check_user.id})\n"
-                            f"USER ID: `{check_user.id}`\n"
-                            f"CHAT: {welcm.chat.title}\n"
-                            f"CHAT ID: `{welcm.chat_id}`\n"
-                            f"REASON: {reason}\n"
-                            f"MESSAGE:\n\n{message.text}")
+                elif ANTI_SPAMBOT_SHOUT:
+                    await welcm.reply(
+                        "@admins\n"
+                        "`ANTI SPAMBOT DETECTOR!\n"
+                        "THIS USER MATCHES MY ALGORITHMS AS A SPAMBOT!`"
+                        f"REASON: {reason}")
+                    kicked = False
+                    reported = True
+                if BOTLOG and (kicked or reported):
+                    await welcm.client.send_message(
+                        BOTLOG_CHATID, "#ANTI_SPAMBOT REPORT\n"
+                        f"USER: [{check_user.first_name}](tg://user?id={check_user.id})\n"
+                        f"USER ID: `{check_user.id}`\n"
+                        f"CHAT: {welcm.chat.title}\n"
+                        f"CHAT ID: `{welcm.chat_id}`\n"
+                        f"REASON: {reason}\n"
+                        f"MESSAGE:\n\n{message.text}")
     except ValueError:
         pass
 

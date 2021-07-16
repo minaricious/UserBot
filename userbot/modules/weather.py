@@ -4,6 +4,7 @@
 # you may not use this file except in compliance with the License.
 #
 """ Userbot module for getting the weather of a city. """
+
 import json
 from datetime import datetime
 from urllib.parse import quote
@@ -19,8 +20,8 @@ from userbot import WEATHER_DEFCITY, WEATHER_DEFLANG
 from userbot.events import register
 
 # ===== CONSTANT =====
-DEFCITY = WEATHER_DEFCITY if WEATHER_DEFCITY else None
-DEFLANG = WEATHER_DEFLANG if WEATHER_DEFLANG else "en"
+DEFCITY = WEATHER_DEFCITY or None
+DEFLANG = WEATHER_DEFLANG or "en"
 # ====================
 
 

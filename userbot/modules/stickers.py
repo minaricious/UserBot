@@ -44,38 +44,37 @@ async def kang(args):
     is_anim = False
     emoji = None
 
-    if message and message.media:
-        if isinstance(message.media, MessageMediaPhoto):
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
-            photo = io.BytesIO()
-            photo = await bot.download_media(message.photo, photo)
-        elif "image" in message.media.document.mime_type.split('/'):
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
-            photo = io.BytesIO()
-            await bot.download_file(message.media.document, photo)
-            if (DocumentAttributeFilename(file_name='sticker.webp') in
-                    message.media.document.attributes):
-                emoji = message.media.document.attributes[1].alt
-                if emoji != '':
-                    emojibypass = True
-        elif "tgsticker" in message.media.document.mime_type:
-            await args.edit(f"`{random.choice(KANGING_STR)}`")
-            await bot.download_file(message.media.document,
-                                    'AnimatedSticker.tgs')
-
-            attributes = message.media.document.attributes
-            for attribute in attributes:
-                if isinstance(attribute, DocumentAttributeSticker):
-                    emoji = attribute.alt
-
-            emojibypass = True
-            is_anim = True
-            photo = 1
-        else:
-            return await args.edit("`Unsupported File!`")
-    else:
+    if not message or not message.media:
         return await args.edit("`I can't kang that...`")
 
+    if isinstance(message.media, MessageMediaPhoto):
+        await args.edit(f"`{random.choice(KANGING_STR)}`")
+        photo = io.BytesIO()
+        photo = await bot.download_media(message.photo, photo)
+    elif "image" in message.media.document.mime_type.split('/'):
+        await args.edit(f"`{random.choice(KANGING_STR)}`")
+        photo = io.BytesIO()
+        await bot.download_file(message.media.document, photo)
+        if (DocumentAttributeFilename(file_name='sticker.webp') in
+                message.media.document.attributes):
+            emoji = message.media.document.attributes[1].alt
+            if emoji != '':
+                emojibypass = True
+    elif "tgsticker" in message.media.document.mime_type:
+        await args.edit(f"`{random.choice(KANGING_STR)}`")
+        await bot.download_file(message.media.document,
+                                'AnimatedSticker.tgs')
+
+        attributes = message.media.document.attributes
+        for attribute in attributes:
+            if isinstance(attribute, DocumentAttributeSticker):
+                emoji = attribute.alt
+
+        emojibypass = True
+        is_anim = True
+        photo = 1
+    else:
+        return await args.edit("`Unsupported File!`")
     if photo:
         splat = args.text.split()
         if not emojibypass:
@@ -242,7 +241,6 @@ async def kang(args):
 async def resize_photo(photo):
     """ Resize the given photo to 512x512 """
     image = Image.open(photo)
-    maxsize = (512, 512)
     if (image.width and image.height) < 512:
         size1 = image.width
         size2 = image.height
@@ -259,6 +257,7 @@ async def resize_photo(photo):
         sizenew = (size1new, size2new)
         image = image.resize(sizenew)
     else:
+        maxsize = (512, 512)
         image.thumbnail(maxsize)
 
     return image

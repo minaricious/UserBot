@@ -33,7 +33,7 @@ ARTIST = 0
 SONG = 0
 USER_ID = 0
 
-BIOPREFIX = BIO_PREFIX if BIO_PREFIX else None
+BIOPREFIX = BIO_PREFIX or None
 LASTFMCHECK = False
 RUNNING = False
 LastLog = False
@@ -103,7 +103,7 @@ async def gettags(track=None, isNowPlaying=None, playing=None):
         arg = track.track
     if not tags:
         tags = arg.artist.get_top_tags()
-    tags = "".join([" #" + t.item.__str__() for t in tags[:5]])
+    tags = "".join(" #" + t.item.__str__() for t in tags[:5])
     tags = sub("^ ", "", tags)
     tags = sub(" ", "_", tags)
     tags = sub("_#", " #", tags)
