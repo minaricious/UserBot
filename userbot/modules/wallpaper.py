@@ -35,7 +35,7 @@ async def wallp(event):
                 im = im.convert("RGB")
                 im.save(idl, "jpeg")
             await event.edit("`Uploading...`")
-            if not len(link[1].split()) < 11:
+            if len(link[1].split()) >= 11:
                 capo = "**" + " ".join(link[1].split()[:11]) + "**"
             else:
                 capo = "**" + link[1] + "**"
@@ -95,12 +95,9 @@ async def walld(strin: str):
             resp = requests.get(page_link.format(strin, n))
         resp = soup(resp.content, "lxml")
     a_s = resp.find_all("a")
-    list_a_s = []
     tit_links = []
     r = ["thumb", "350", "img", "big.php?i", "data-src", "title"]
-    for a_tag in a_s:
-        if all(d in str(a_tag) for d in r):
-            list_a_s.append(a_tag)
+    list_a_s = [a_tag for a_tag in a_s if all(d in str(a_tag) for d in r)]
     try:
         for df in list_a_s:
             imgi = df.find("img")

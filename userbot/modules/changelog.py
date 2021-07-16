@@ -18,11 +18,11 @@ from userbot.events import register
 
 
 async def gen_chlog(repo, diff):
-    ch_log = ''
     d_form = "%d/%m/%y"
-    for c in repo.iter_commits(diff):
-        ch_log += f'•[{c.committed_datetime.strftime(d_form)}]: {c.summary} <{c.author}>\n'
-    return ch_log
+    return ''.join(
+        f'•[{c.committed_datetime.strftime(d_form)}]: {c.summary} <{c.author}>\n'
+        for c in repo.iter_commits(diff)
+    )
 
 
 async def is_off_br(br):
@@ -85,9 +85,8 @@ async def chtream(ch):
         changelog_str = f'**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`'
         if len(changelog_str) > 4096:
             await ch.edit("`Changelog is too big, sending it as a file.`")
-            file = open("output.txt", "w+")
-            file.write(changelog_str)
-            file.close()
+            with open("output.txt", "w+") as file:
+                file.write(changelog_str)
             await ch.client.send_file(
                 ch.chat_id,
                 "output.txt",
