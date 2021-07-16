@@ -21,7 +21,7 @@ cur_version = sys.version_info
 if cur_version >= version:  # If the Current Version of Python is 3.0 or above
     import http.client
     import urllib.request
-    from http.client import BadStatusLine, IncompleteRead
+    from http.client import BadStatusLine
     from urllib.parse import quote
     from urllib.request import HTTPError, Request, URLError, urlopen
     from importlib import reload
@@ -32,7 +32,7 @@ else:  # If the Current Version of Python is 2.x
 
     import httplib
     import urllib2
-    from httplib import BadStatusLine, IncompleteRead
+    from httplib import BadStatusLine
     from urllib2 import HTTPError, Request, URLError, urlopen
 
     httplib._MAXHEADERS = 1000
@@ -505,8 +505,7 @@ class googleimagesdownload:
         if cur_version >= version:  # If the Current Version of Python is 3.0 or above
             try:
                 headers = {
-                    "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
-                }
+                    "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"}
 
                 req = urllib.request.Request(url, headers=headers)
                 resp = urllib.request.urlopen(req)
@@ -519,8 +518,7 @@ class googleimagesdownload:
         else:  # If the Current Version of Python is 2.x
             try:
                 headers = {
-                    "User-Agent": "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"
-                }
+                    "User-Agent": "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"}
 
                 req = urllib2.Request(url, headers=headers)
                 try:
@@ -654,7 +652,7 @@ class googleimagesdownload:
             "image_width": main[1],
             "image_link": main[0],
             "image_format": main[0][
-                -1 * (len(main[0]) - main[0].rfind(".") - 1) :
+                -1 * (len(main[0]) - main[0].rfind(".") - 1):
             ],
         }
 
@@ -1143,7 +1141,8 @@ class googleimagesdownload:
     ):
         if not silent_mode and (print_urls or no_download):
             print("Image URL: " + image_url)
-        if ignore_urls and any(url in image_url for url in ignore_urls.split(",")):
+        if ignore_urls and any(
+                url in image_url for url in ignore_urls.split(",")):
             return (
                 "fail",
                 "Image ignored due to 'ignore url' parameter",
@@ -1590,7 +1589,8 @@ class googleimagesdownload:
         total_errors = 0
         for pky in prefix_keywords:  # 1.for every prefix keywords
             for sky in suffix_keywords:  # 2.for every suffix keywords
-                for i in range(len(search_keyword)):  # 3.for every main keyword
+                for i in range(
+                        len(search_keyword)):  # 3.for every main keyword
                     iteration = (
                         "\n"
                         + "Item no.: "
@@ -1670,8 +1670,9 @@ class googleimagesdownload:
                         except OSError as e:
                             print(e)
                         with open(
-                            "logs/" + search_keyword[i] + ".json", "w") as json_file:
-                            json.dump(items, json_file, indent=4, sort_keys=True)
+                                "logs/" + search_keyword[i] + ".json", "w") as json_file:
+                            json.dump(
+                                items, json_file, indent=4, sort_keys=True)
                     # Related images
                     if arguments["related_images"]:
                         print(

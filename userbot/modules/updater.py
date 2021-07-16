@@ -31,8 +31,9 @@ requirements_path = path.join(
 
 async def gen_chlog(repo, diff):
     d_form = "%d/%m/%y"
-    return ''.join(f'•[{c.committed_datetime.strftime(d_form)}]: '
-            f'{c.summary} <{c.author}>\n' for c in repo.iter_commits(diff))
+    return ''.join(
+        f'•[{c.committed_datetime.strftime(d_form)}]: '
+        f'{c.summary} <{c.author}>\n' for c in repo.iter_commits(diff))
 
 
 async def update_requirements():
