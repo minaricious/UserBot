@@ -142,9 +142,12 @@ async def uploadir(udir_event):
                     thumb_image = os.path.join(input_str, "thumb.jpg")
                     c_time = time.time()
                     metadata = extractMetadata(createParser(single_file))
-                    duration = metadata.get("duration").seconds if metadata.has("duration") else 0
-                    width = metadata.get("width") if metadata.has("width") else 0
-                    height = metadata.get("height") if metadata.has("height") else 0
+                    duration = metadata.get(
+                        "duration").seconds if metadata.has("duration") else 0
+                    width = metadata.get(
+                        "width") if metadata.has("width") else 0
+                    height = metadata.get(
+                        "height") if metadata.has("height") else 0
                     await udir_event.client.send_file(
                         udir_event.chat_id,
                         single_file,
@@ -277,7 +280,8 @@ async def uploadas(uas_event):
         thumb = get_video_thumb(file_name, output=thumb_path)
     if os.path.exists(file_name):
         metadata = extractMetadata(createParser(file_name))
-        duration = metadata.get("duration").seconds if metadata.has("duration") else 0
+        duration = metadata.get(
+            "duration").seconds if metadata.has("duration") else 0
         width = metadata.get("width") if metadata.has("width") else 0
         height = metadata.get("height") if metadata.has("height") else 0
         try:

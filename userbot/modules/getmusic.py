@@ -137,7 +137,8 @@ async def _(event):
         await event.edit(f"Sorry..! i can't find anything with `{query}`")
     loa = l[0]
     metadata = extractMetadata(createParser(loa))
-    duration = metadata.get("duration").seconds if metadata.has("duration") else 0
+    duration = metadata.get(
+        "duration").seconds if metadata.has("duration") else 0
     width = metadata.get("width") if metadata.has("width") else 0
     height = metadata.get("height") if metadata.has("height") else 0
     await event.edit("`Uploading video.. Please wait..`")
