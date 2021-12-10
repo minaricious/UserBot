@@ -72,9 +72,7 @@ async def mim(event):
                 await event.edit("```can you kindly disable your forward privacy settings for good, Nibba?```")
             if "Okay..." in response.text:
                 await event.edit("```🛑 🤨 NANI?! This is not an image! This will take sum tym to convert to image... UwU 🧐 🛑```")
-                thumb = None
-                if os.path.exists(THUMB_IMAGE_PATH):
-                    thumb = THUMB_IMAGE_PATH
+                thumb = THUMB_IMAGE_PATH if os.path.exists(THUMB_IMAGE_PATH) else None
                 input_str = event.pattern_match.group(1)
                 if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
                     os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
@@ -117,8 +115,8 @@ async def mim(event):
                     caption="Memifyed",
                 )
                 await event.delete()
-                # await bot.send_message(event.chat_id, "`☠️☠️Ah Shit... Here we go
-                # Again!🔥🔥`")
+                            # await bot.send_message(event.chat_id, "`☠️☠️Ah Shit... Here we go
+                            # Again!🔥🔥`")
             elif not is_message_image(reply_message):
                 await event.edit("Invalid message type. Plz choose right message type u NIBBA.")
                 return

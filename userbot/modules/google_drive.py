@@ -339,11 +339,7 @@ async def download(gdrive, service, uri=None):
                 return reply
     except Exception as e:
         status = status.replace("DOWNLOAD]", "ERROR]")
-        reply += (
-            f"`{status}`\n\n"
-            "`Status` : **failed**\n"
-            f"`Reason` : `{str(e)}`\n\n"
-        )
+        reply += f'`{status}`\n\n`Status` : **failed**\n`Reason` : `{e}`\n\n'
         return reply
     return
 
@@ -777,11 +773,7 @@ async def lists(gdrive):
                 pageToken=page_token
             ).execute()
         except HttpError as e:
-            await gdrive.edit(
-                "`[GDRIVE - LIST]`\n\n"
-                "`Status` : **BAD**\n"
-                f"`Reason` : {str(e)}"
-            )
+            await gdrive.edit(f'`[GDRIVE - LIST]`\n\n`Status` : **BAD**\n`Reason` : {e}')
             return
         for files in response.get('files', []):
             if len(result) >= page_size:
@@ -897,11 +889,7 @@ async def google_drive_managers(gdrive):
                 try:
                     f = await get_information(service, f_id)
                 except Exception as e:
-                    reply += (
-                        f"`[FILE/FOLDER - ERROR]`\n\n"
-                        "`Status` : **BAD**"
-                        f"`Reason` : `{str(e)}`\n\n"
-                    )
+                    reply += f'`[FILE/FOLDER - ERROR]`\n\n`Status` : **BAD**`Reason` : `{e}`\n\n'
                     continue
             name = f.get('name')
             mimeType = f.get('mimeType')
@@ -914,11 +902,7 @@ async def google_drive_managers(gdrive):
                                        ).execute()
             except HttpError as e:
                 status.replace("DELETE]", "ERROR]")
-                reply += (
-                    f"`{status}`\n\n"
-                    "`Status` : **BAD**"
-                    f"`Reason` : {str(e)}\n\n"
-                )
+                reply += f'`{status}`\n\n`Status` : **BAD**`Reason` : {e}\n\n'
                 continue
             else:
                 reply += (
@@ -936,11 +920,7 @@ async def google_drive_managers(gdrive):
                 try:
                     f = await get_information(service, f_id)
                 except Exception as e:
-                    reply += (
-                        "`[FILE/FOLDER - ERROR]`\n\n"
-                        "`Status` : **BAD**\n"
-                        f"`Reason` : `{str(e)}`\n\n"
-                    )
+                    reply += f'`[FILE/FOLDER - ERROR]`\n\n`Status` : **BAD**\n`Reason` : `{e}`\n\n'
                     continue
             """ - If exists parse file/folder information - """
             name_or_id = f.get('name')  # override input value
@@ -1031,11 +1011,9 @@ async def google_drive(gdrive):
             return True
         except Exception as e:
             await gdrive.edit(
-                "`[FOLDER - UPLOAD]`\n\n"
-                f"`{folder_name}`\n"
-                "`Status` : **BAD**\n"
-                f"`Reason` : {str(e)}"
+                f'`[FOLDER - UPLOAD]`\n\n`{folder_name}`\n`Status` : **BAD**\n`Reason` : {e}'
             )
+
             await reset_parentId()
             return False
         else:
@@ -1065,11 +1043,7 @@ async def google_drive(gdrive):
                     )
                     break
                 except Exception as e:
-                    reply += (
-                        "`[FILE - ERROR]`\n\n"
-                        "`Status` : **BAD**\n"
-                        f"`Reason` : {str(e)}\n\n"
-                    )
+                    reply += f'`[FILE - ERROR]`\n\n`Status` : **BAD**\n`Reason` : {e}\n\n'
                     continue
             if not reply:
                 return None
@@ -1095,11 +1069,7 @@ async def google_drive(gdrive):
                         )
                         break
                     except Exception as e:
-                        reply += (
-                            "`[FILE - ERROR]`\n\n"
-                            "`Status` : **BAD**\n"
-                            f"`Reason` : {str(e)}\n\n"
-                        )
+                        reply += f'`[FILE - ERROR]`\n\n`Status` : **BAD**\n`Reason` : {e}\n\n'
                         continue
             if not reply:
                 return None
@@ -1130,11 +1100,8 @@ async def google_drive(gdrive):
                     break
                 else:
                     """ - if something bad happened, continue to next uri - """
-                    reply += (
-                        "`[UNKNOWN - ERROR]`\n\n"
-                        "`Status` : **BAD**\n"
-                        f"`Reason` : `{dl}` | `{str(e)}`\n\n"
-                    )
+                    reply += f'`[UNKNOWN - ERROR]`\n\n`Status` : **BAD**\n`Reason` : `{dl}` | `{e}`\n\n'
+
                     continue
         await gdrive.respond(reply, link_preview=False)
         await gdrive.delete()
@@ -1201,7 +1168,7 @@ async def set_upload_folder(gdrive):
         ext_id = re.findall(r'\bhttps?://drive\.google\.com\S+', inp)[0]
     except IndexError:
         """ - if given value isn't folderURL assume it's an Id - """
-        c1 = True if any(map(str.isdigit, inp)) else False
+        c1 = any(map(str.isdigit, inp))
         if "-" in inp or "_" in inp:
             c2 = True
         else:
@@ -1257,7 +1224,7 @@ async def check_progress_for_dl(gdrive, gid, previous):
     global filenames
     is_cancelled = False
     while not complete:
-        if is_cancelled is True:
+        if is_cancelled:
             raise CancelProcess
 
         file = aria2.get_download(gid)
